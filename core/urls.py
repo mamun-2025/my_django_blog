@@ -34,11 +34,3 @@ urlpatterns = [
 if settings.DEBUG:
    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
    
-from django.contrib.auth.models import User
-
-try:
-    if not User.objects.filter(username= 'admin').exists():
-        User.objects.create_superuser('admin', 'beparimamun708@gmail.com', 'mamun12345')
-        print("Admin user created successfully!")
-except:
-    pass
