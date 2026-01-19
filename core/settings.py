@@ -10,12 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -76,14 +76,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# আগের DATABASES অংশটি মুছে শুধু এটি রাখুন
 DATABASES = {
-    
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        'default': dj_database_url.parse('postgresql://neondb_owner:npg_Vj9uAaXKg0NC@ep-cold-darkness-ahdcg4mp-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require')
-    }
-
-
+    'default': dj_database_url.parse('postgresql://neondb_owner:npg_Vj9uAaXKg0NC@ep-cold-darkness-ahdcg4mp-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require')
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
