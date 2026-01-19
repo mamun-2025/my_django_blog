@@ -36,5 +36,9 @@ if settings.DEBUG:
    
 from django.contrib.auth.models import User
 
-if not User.objects.filter(username= 'admin').exists():
-   User.objects.create_superuser('admin', 'beparimamun708@gmail.com', 'mamun123')
+try:
+    if not User.objects.filter(username= 'admin').exists():
+        User.objects.create_superuser('admin', 'beparimamun708@gmail.com', 'mamun12345')
+        print("Admin user created successfully!")
+except:
+    pass
