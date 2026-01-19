@@ -20,6 +20,24 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from my_blog_app import views as user_views
 from django.contrib.auth import views as auth_views # লগইন/আউটের জন্য
+from django.contrib.auth.models import User
+
+# ইউজার তৈরির ফাংশন
+def create_admin_if_not_exists():
+    try:
+        if not User.objects.filter(username='admin').exists():
+            User.objects.create_superuser('admin', 'beparimamun708@gmail.com', 'mamun12345')
+            print("Admin user created successfully!")
+        else:
+            user = User.objects.get(username='admin')
+            user.set_password('mamun12345')
+            user.save()
+            print("Admin password updated!")
+    except Exception as e:
+        print(f"Error creating admin: {e}")
+
+# ফাংশনটি কল করুন
+create_admin_if_not_exists()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
