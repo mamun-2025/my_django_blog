@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width: 500px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+   <h2>Join Today (Sign Up)</h2>
+   <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" style="width: 100%; background: #28a745; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">
+         Sign Up
+      </button>
+      <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 10px;">
+         <small>
+            Already Have An Account? 
+            <a href="/admin/login/">
+               Log In
+            </a>
+         </small>
+      </div>
+</div>
+{% endblock %}

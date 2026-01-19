@@ -1,0 +1,30 @@
+
+{% extends "base.html" %} {% block content %} <h2>Later Blog Posts</h2>
+   <hr>
+
+   {% for post in posts %}
+      <div class="post-item" style="margin-bottom: 30px;">
+         {% if post.image %}
+            <div class="post-image">
+               <img src="{{ post.image.url}}" alt="{{ post.title }}" style="width: 200px; height: auto; border-radius: 8px;">
+            </div>
+         {% endif %}
+
+         <h2><a href="{% url 'post-detail' post.slug %}" style="text-decoration: none; color: #333;">{{ post.title }}</a></h2>
+
+         <p style="color: gray; font-size: 0.9rem;">
+            <strong>Category:</strong> {{ post.category.name|default:"Uncategorized" }}|
+            <strong>Author:</strong> {{ post.author.username }}
+            <strong>Date:</strong> {{ post.created_at|date:"M d, Y" }}
+         </p>
+
+         <p>{{ post.body|truncatewords:30 }}</p> <a href="{% url 'post-detail' post.slug %}" style="color: #007bff; text-decoration: none; font-weight: bold;">
+            Read More &rarr;
+         </a>
+      </div>
+      <hr>
+   {% empty %}
+      <p>No posts found. Check back later!</p>
+   {% endfor %}
+
+{% endblock %}

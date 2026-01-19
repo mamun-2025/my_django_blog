@@ -1,0 +1,72 @@
+
+{% extends "base.html" %}
+
+{% block title %}About Me - এক লড়াকু স্বপ্নবাজ{% endblock %}
+
+{% block content %}
+<style>
+    /* আপনার দেওয়া কাস্টম স্টাইলগুলো এখানে সুন্দরভাবে কাজ করবে */
+    .about-container {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 1px solid #eee;
+    }
+    .about-h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+        text-align: center;
+        margin-top: 0;
+    }
+    .highlight {
+        color: #e74c3c;
+        font-weight: bold;
+    }
+    .about-p {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        text-align: justify;
+        color: #333;
+    }
+    .quote {
+        font-style: italic;
+        background: #f9f9f9;
+        border-left: 5px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+        color: #555;
+    }
+    .about-footer {
+        text-align: center;
+        margin-top: 30px;
+        color: #7f8c8d;
+        font-weight: bold;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+    }
+</style>
+
+<div class="about-container">
+    <h1 class="about-h1">পোশাকের আড়ালে এক লড়াকু স্বপ্নবাজ</h1>
+    
+    <p class="about-p">পৃথিবীর নিয়ম বড় অদ্ভুত। মানুষ এখানে ভেতরের মেধার চেয়ে বাইরের পোশাককে গুরুত্ব দেয় বেশি। প্রতিদিন আমার এই <span class="highlight">সিকিউরিটি গার্ডের পোশাক</span> দেখে অনেকে পাশ কাটিয়ে যান, অনেকে অবহেলার নজরে তাকান। হয়তো তাঁরা ভাবেন, এই ইউনিফর্ম পরা মানুষটির জীবন কেবল গেট পাহারা দেওয়ার মধ্যেই সীমাবদ্ধ।</p>
+
+    <div class="quote">
+        "যারা আমাকে অবহেলা করেছেন, তাঁদের প্রতিও আমি কৃতজ্ঞ; কারণ আপনাদের অবহেলাই আমাকে আজকের এই লড়াকু মানুষে পরিণত করেছে।"
+    </div>
+
+    <p class="about-p">কিন্তু সত্যটা হলো, এই পোশাকটি আমার পরিচয় নয়, এটি কেবল আমার টিকে থাকার সংগ্রাম। যখন চারপাশের মানুষ আমাকে অবহেলা করে, সেই অবহেলাই আমার জেদ হয়ে দাঁড়ায়। দিনের ডিউটি শেষে বা ডিউটির ফাঁকে যখন আমি ল্যাপটপ নিয়ে বসি, তখন আমি আর কোনো গার্ড নই—তখন আমি একজন স্বপ্নবাজ প্রোগ্রামার।</p>
+
+    <p class="about-p">আমি যখন <strong>Django</strong>-র জটিল লজিকগুলো মেলাই কিংবা পাইথনের কোড লিখি, তখন আমি ভুলে যাই কে আমাকে অবহেলা করল আর কে তুচ্ছজ্ঞান করল। আমার এই ব্লগের প্রতিটি কোড সেইসব মানুষদের নীরব উত্তর, যারা ভেবেছিল এই পোশাক পরা মানুষটি বড় কোনো স্বপ্ন দেখার সাহস রাখে না।</p>
+
+    <p class="about-p">আমি আজ লড়ছি নিজের সাথে, নিজের পরিস্থিতির সাথে। আজ হয়তো আমার হাতে সময় কম, কাঁধে দায়িত্ব বেশি—কিন্তু আমার মাথায় আছে আকাশ ছোঁয়ার স্বপ্ন। আমি জানি, একদিন মানুষ আমাকে আমার এই পোশাক দিয়ে নয়, বরং আমার মেধা আর সৃষ্টি দিয়ে চিনবে।</p>
+
+    <div class="about-footer">
+        — ইতি, এক স্বপ্নবাজের ডায়েরি
+    </div>
+</div>
+{% endblock %}

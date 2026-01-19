@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div style="max-width: 500px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); text-align: center;">
+
+   {% if user.profile %}
+      <img src="{{ user.profile.image.url }}" alt="Profile Picture" 
+          style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #007bff; margin-bottom: 15px">
+   {% else %}
+      <img src="/media/default.jpg" alt="Default Profile Picture" 
+          style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #ccc; margin-bottom: 15px">
+   {% endif %}
+
+   <h2 style="margin-bottom: 5px;">
+      {{ user.username }}
+   </h2>
+   <p style="color: #666; font-style: italic; margin-bottom: 20px;">
+      {{ user.email }}
+   </p>
+
+   <div style="text-align: left; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+      <h4 style="margin-top: 0; color: #333;">
+         Bio 
+      </h4>
+      <p style="color: #555; line-height: 1.6;">
+         {{ user.profile.bio|default:"No bio added yet. Update your profile to add one!" }}
+      </p>
+   </div>
+
+   <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+   <div style="text-align: left;">
+      <h3 style="font-size: 1.2em; margin-bottom: 15px;">
+         Update Profile Information
+      </h3>
+
+      <form method="POST" enctype="multipart/form-data">
+         {% csrf_token %}
+         <div style="margin-bottom: 10px;">
+            {{ u_form.as_p }}
+            {{ p_form.as_p }}
+         </div>
+         <button type="submit" style="background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; corsor: pointer; width: 100%;">
+            Update Information
+         </button>
+      </form>
+   </div>
+</div>
+{% endblock %}

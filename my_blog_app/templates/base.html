@@ -1,0 +1,84 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Blog</title>
+    <style>
+        /* সিম্পল নেভিগেশন বার ডিজাইন */
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div>
+            <a href="{% url 'home' %}" style="font-size: 1.5em; font-weight: bold;">MyBlog</a>
+        </div>
+        <div>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}" style="margin-right: 15px;">
+                About 
+            </a>
+            
+            {% if user.is_authenticated %}
+                <a href="{% url 'post-create' %}" style="background-color: #28a745; padding: 5px 10px; border-radius: 4px; font-weight: bold;">
+                    + New post
+                </a>
+                <span style="margin-left: 15px;">
+                    Hi, {{ user.username }}!
+                    {% if user.profile %}
+                        (<a href="{% url 'profile' %}" style="text-decoration: underline; font-size: 0.9em;">View Profile</a>)
+                    {% endif %}
+                </span>
+                <form action="{% url 'logout' %}" method="post" style="display:inline; margin-left: 10px;">
+                    {% csrf_token %}
+                    <button type="submit" style="background:none; border:none; color:white; cursor:pointer; text-decoration:underline;">
+                        Logout 
+                    </button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">
+                    Login 
+                </a>
+                <a href="{% url 'register' %}" style="margin-left: 10px;">
+                    Register 
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div style="padding: 10px; background: #d4edda; color: #155724; margin-bottom: 20px; border-radius: 5px;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

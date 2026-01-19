@@ -1,0 +1,78 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ post.title }}</h1>
+
+<p style="color: gray;">
+   Published on: {{ post.created_at|date:"F d, Y" }}|
+   Author: {{ post.author.username }}|
+   Category: {{ post.category.name|default:"General" }}
+</p>
+
+{% if post.author == user %}
+   <div style="margin-bottom: 20px; margin-top: 10px;">
+      <a href="{% url 'post-update' post.slug %}" style="padding: 8px 15px; background: orange; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">
+         Edit Post
+      </a>
+      <a href="{% url 'post-delete' post.slug %}" style="padding: 8px 15px; background: #dc3545; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; margin-left: 10px;">
+         Delete Post
+      </a>
+   </div>
+{% endif %}
+
+<hr>
+
+
+{% if post.image %}
+   <div style="margin-bottom: 20px;">
+      <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 100%; height: auto; border-radius: 10px;">
+   </div>
+{% endif %}
+
+<div style="line-height: 1.6; font-size: 1.1em; white-space: pre-wrap;">
+   {{ post.body }}
+</div>
+
+
+
+<hr>
+
+
+
+<div class="add-comment" style="margin-bottom: 40px;">
+   <h3>Leave a Comment</h3>
+   {% if user.is_authenticated %}
+      <form method="POST">
+         {% csrf_token %}
+         <div style="margin-bottom: 10px;">
+            {{ form.as_p }} </div>
+         <button type="submit" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+            Submit Comment
+         </button>
+      </form>
+   {% else %}
+      <p>Please <a href="/admin/login/">login</a> to leave a comment.</p>
+   {% endif %}
+</div>
+
+
+
+<div class="comments-section">
+   <h3>Comments ({{ post.comments.count }})</h3>
+
+   {% for comment in post.comments.all %}
+      <div style="background: #f9f9f9; padding: 15px; margin-bottom: 10px; border-radius: 5px;">
+         <p><strong>{{ comment.user.username }}</strong> <small>- {{comment.date_added|timesince }} ago</small></p>
+         <p>{{ comment.content }}</p>
+      </div>
+   {% empty %}
+      <p>No commentts yet. Be the first to comment!</p>
+   {% endfor %}
+</div>
+
+<hr>
+
+<a href="{% url 'home' %}">&rarr; Back to Home</a>
+
+{% endblock %}
