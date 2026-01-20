@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    'cloudinary',
     'my_blog_app',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -126,9 +126,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 # লগইন করার পর ইউজার কোন পেজে যাবে
 LOGIN_REDIRECT_URL = 'home'
 
@@ -138,6 +135,7 @@ LOGIN_URL = 'login'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 import os
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
