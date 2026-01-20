@@ -10,6 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+
+import os
+from dotenv import load_dotenv
+load_dotenv() # এটি .env ফাইল থেকে তথ্যগুলো জ্যাঙ্গোতে নিয়ে আসবে
+
+
 import os
 from pathlib import Path
 import dj_database_url
@@ -41,7 +47,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'my_blog_app'
+    'my_blog_app',
 ]
 
 MIDDLEWARE = [
@@ -133,9 +139,9 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
