@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'my_blog_app'
 ]
 
@@ -128,3 +130,12 @@ LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dezjjr8oa',
+    'API_KEY': '993875859939716',
+    'API_SECRET': 'iTsLffSIpY7ah8ZB4sZwehp4a7g'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
